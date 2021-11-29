@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyString
+  notes: MyText
+  response: MyText
+  completed_at: 2021-11-29 10:52:27
+  todo_list: one
+  user: one
+
+two:
+  task: MyString
+  notes: MyText
+  response: MyText
+  completed_at: 2021-11-29 10:52:27
+  todo_list: two
+  user: two

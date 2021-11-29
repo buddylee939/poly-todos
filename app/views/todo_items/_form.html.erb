@@ -1,0 +1,20 @@
+
+<%= simple_form_for(@todo_item) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :task %>
+    <%= f.input :notes %>
+    <%= f.input :response %>
+    <%= f.input :completed %>
+    <%#= f.input :completed_at, as: %>
+    <%= f.association :todo_list, prompt: 'Choose a Todo List' %>
+    <%= f.input :user_id, collection: User.all.map {|u| [u.first_name, u.id]}, prompt: 'Select User' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+

@@ -5,7 +5,7 @@ $( document ).on('turbolinks:load', function() {
   if(notification) {
     window.setTimeout(function() {
       notification.style.display = "none";
-    }, 4000);
+    }, 3000);
   }
 
 });

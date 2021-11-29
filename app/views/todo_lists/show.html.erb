@@ -1,0 +1,38 @@
+<h1 class="display-1"><%= @todo_list.title %></h1>
+<p class="lead"> 
+  <%= @todo_list.description %>
+</p>
+
+<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
+<%= link_to 'Back', todo_lists_path %>
+
+<hr>
+
+<h3>Number of tasks <%= @todo_list.todo_items.count %></h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Notes</th>
+      <th>Response</th>
+      <th>Completed</th>
+      <th>User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_list.todo_items.each do |todo| %>
+      <tr>
+        <td><%= todo.task %></td>
+        <td><%= todo.notes %></td>
+        <td><%= todo.response %></td>
+        <td><%= !todo.completed_at.nil? ? 'Yes' : 'No' %></td>
+        <td><%= todo.user.first_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<h2>Add New Task</h2>
+<%= render 'todo_items/form' %>

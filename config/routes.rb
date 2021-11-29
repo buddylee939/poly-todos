@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :todo_items
+  resources :todo_lists
   root 'pages#home'
   devise_for :users, :skip => [:registrations] 
   as :user do

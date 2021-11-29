@@ -1,0 +1,33 @@
+
+<p>
+  <strong>Task:</strong>
+  <%= @todo_item.task %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @todo_item.notes %>
+</p>
+
+<p>
+  <strong>Response:</strong>
+  <%= @todo_item.response %>
+</p>
+
+<p>
+  <strong>Completed at:</strong>
+  <%= @todo_item.completed_at %>
+</p>
+
+<p>
+  <strong>Todo list:</strong>
+  <%= @todo_item.todo_list.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @todo_item.user.first_name %>
+</p>
+
+<%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
+<%= link_to 'Back', todo_items_path %>

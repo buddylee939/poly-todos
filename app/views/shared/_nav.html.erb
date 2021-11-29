@@ -13,6 +13,12 @@
         <%= link_to 'About', about_path, class: 'nav-link' %>
       </li>
       <% if user_signed_in? %>
+      <li class="nav-item <%= active?(todo_lists_path) %>">
+        <%= link_to 'All Todos', todo_lists_path, class: 'nav-link' %>
+      </li>      
+      <li class="nav-item <%= active?(todo_items_path) %>">
+        <%= link_to 'All Tasks', todo_items_path, class: 'nav-link' %>
+      </li>          
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= current_user.first_name %>
@@ -21,6 +27,8 @@
             <%= link_to 'Edit Account', edit_user_registration_path, class: 'dropdown-item' %>
             <a class="dropdown-item" href="#">My Todos</a>
             <div class="dropdown-divider"></div>
+            <%= link_to 'New Todo', new_todo_list_path, class: 'dropdown-item' %>
+            <%= link_to 'New Task', new_todo_item_path, class: 'dropdown-item' %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
           </div>
         </li>
