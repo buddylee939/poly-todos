@@ -1,8 +1,10 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: %i[ show edit update destroy ]
-
+  before_action :page_count, only: %i[ index ]
   # GET /todo_lists or /todo_lists.json
   def index
+    @count.count += 1
+    @count.save
     # @todo_lists = TodoList.all
     @todo_lists = TodoList.all
     @tasks_undone = TodoItem.where(completed: false)
@@ -70,5 +72,9 @@ class TodoListsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def todo_list_params
       params.require(:todo_list).permit(:title, :description)
+    end
+
+    def page_count
+      @count = PageCount.first
     end
 end

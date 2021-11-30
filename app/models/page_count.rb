@@ -1,0 +1,2 @@
+class PageCount < ApplicationRecord
+end
