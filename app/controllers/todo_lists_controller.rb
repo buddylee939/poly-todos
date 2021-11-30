@@ -5,6 +5,7 @@ class TodoListsController < ApplicationController
   def index
     # @todo_lists = TodoList.all
     @todo_lists = TodoList.all
+    @tasks_undone = TodoItem.where(completed: false)
   end
 
   # GET /todo_lists/1 or /todo_lists/1.json
