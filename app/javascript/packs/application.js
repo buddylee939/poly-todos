@@ -9,8 +9,14 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "packs/global" 
+import "packs/datatables" 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+$( document ).on('turbolinks:load', function() {
+    $('#myTable').DataTable({
+        "order": [[ 3, "asc" ]]
+    });
+} );  

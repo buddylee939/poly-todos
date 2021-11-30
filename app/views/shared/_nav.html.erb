@@ -13,7 +13,10 @@
         </li>
         <li class="nav-item <%= active?(todo_items_path) %>">
           <%= link_to 'All Tasks', todo_items_path, class: 'nav-link' %>
-        </li>          
+        </li>      
+        <li class="nav-item <%= active?(completed_todos_path) %>">
+          <%= link_to 'Completed Tasks', completed_todos_path, class: 'nav-link' %>
+        </li>                  
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= current_user.first_name %>

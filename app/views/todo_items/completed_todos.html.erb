@@ -1,7 +1,6 @@
-<h1 class="display-3 my-5"><%= @user.first_name %>'s Todos</h1>
+<h1 class="display-3 my-5">Completed Tasks</h1>
 <h3>
-  Number of tasks: <%= @user.todo_items.count %> - 
-  Number Completed: <%= @completed_items.count %>
+  Number Completed: <%= @completed_todos.count %>
 </h3>
 <div class="table-responsive">
   <table id="myTable" class="table table-striped table-hover table-bordered">
@@ -10,22 +9,22 @@
         <th>Task</th>
         <th>Notes</th>
         <th>Response</th>
-        <th>Completed</th>
+        <th>Completed On</th>
         <th>User</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @list_items.each do |todo| %>
+      <% @completed_todos.each do |todo| %>
         <tr class="<%= todo.completed ? 'table-success' : '' %>">
           <td><%= link_to todo.task, todo %></td>
           <td><%= truncate(todo.notes, length: 40) %></td>
           <td><%= truncate(todo.response, length: 40) %></td>
-          <td><%= !todo.completed_at.nil? ? 'Yes' : 'No' %></td>
-          <td><%= todo.user.first_name %></td>
+          <td><%= todo.completed_at.strftime("%m/%d/%Y") %></td>
+          <td><%= link_to todo.user.first_name, my_todos_path(user_id: todo.user.id) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%#= will_paginate @list_items, list_classes: %w(pagination justify-content-center) %>
+  <%#= will_paginate @completed_todos, list_classes: %w(pagination justify-content-center) %>
 </div>
