@@ -1,9 +1,6 @@
 # needed
 
-
-
-- make a default todo_item
-
+- add sortable table
 - maybe datatable to filter the tasks by any category
 
 
