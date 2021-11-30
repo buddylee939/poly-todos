@@ -3,7 +3,14 @@ class TodoItemsController < ApplicationController
 
   # GET /todo_items or /todo_items.json
   def index
-    @todo_items = TodoItem.all
+    # @todo_items = TodoItem.all
+    @todo_items = TodoItem.paginate(page: params[:page], per_page: 10).order("completed ASC")
+  end
+
+  def my_todos
+    @user = User.find(params[:user_id])
+    @completed_items = @user.todo_items.completed
+    @list_items = @user.todo_items.paginate(page: params[:page], per_page: 10).order("completed ASC")
   end
 
   # GET /todo_items/1 or /todo_items/1.json

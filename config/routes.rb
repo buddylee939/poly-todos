@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :todo_items
   resources :todo_lists
-  root 'pages#home'
+  get 'my_todos', to: 'todo_items#my_todos'
+  root 'todo_lists#index'
   devise_for :users, :skip => [:registrations] 
   as :user do
     get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'

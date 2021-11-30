@@ -1,33 +1,47 @@
-
+<h1 class="display-4 my-5"><%= @todo_item.task %></h1>
 <p>
-  <strong>Task:</strong>
-  <%= @todo_item.task %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @todo_item.notes %>
-</p>
-
-<p>
-  <strong>Response:</strong>
-  <%= @todo_item.response %>
-</p>
-
-<p>
-  <strong>Completed at:</strong>
-  <%= @todo_item.completed_at %>
-</p>
-
-<p>
-  <strong>Todo list:</strong>
-  <%= @todo_item.todo_list.title %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @todo_item.user.first_name %>
-</p>
-
-<%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
+  <%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
 <%= link_to 'Back', todo_items_path %>
+</p>
+<p class="lead">
+  Todo: <%= link_to @todo_item.todo_list.title, @todo_item.todo_list %> |
+  In Charge: <%= link_to @todo_item.user.first_name, my_todos_path(user_id: @todo_item.user.id) %>
+</p>
+
+<hr>
+
+<div class="card mb-5">
+  <div class="card-header">
+    Created on: <%= @todo_item.created_at.strftime("%m/%d/%Y") %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <strong>Notes:</strong>
+    </h5>    
+    <p class="card-text">
+      <%= markdown @todo_item.notes %>
+    </p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Completed on: <%= @todo_item.completed_at.strftime("%m/%d/%Y") if @todo_item.completed %>
+  </div>
+  <div class="card-body">
+    <% if @todo_item.completed %>
+      <h5 class="card-title">
+        <strong>Response:</strong>
+      </h5>
+      <p class="card-text">
+        <%= markdown @todo_item.notes %>
+      </p>
+    <% else %>
+      <p class="card-text">
+        <em>Task not finished</em>
+      </p> 
+    <% end %>
+  </div>
+</div>
+
+

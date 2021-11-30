@@ -1,18 +1,8 @@
-<h1 class="display-4 my-5"><%= @todo_list.title %></h1>
-<p class="lead"> 
-  <%= @todo_list.description %>
-</p>
-
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
-
-<hr>
-
+<h1 class="display-3 my-5"><%= @user.first_name %>'s Todos</h1>
 <h3>
-  Number of tasks: <%= @todo_list.todo_items.count %> - 
+  Number of tasks: <%= @user.todo_items.count %> - 
   Number Completed: <%= @completed_items.count %>
 </h3>
-
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead class="thead-dark">
@@ -32,13 +22,10 @@
           <td><%= truncate(todo.notes, length: 40) %></td>
           <td><%= truncate(todo.response, length: 40) %></td>
           <td><%= !todo.completed_at.nil? ? 'Yes' : 'No' %></td>
-          <td><%= link_to todo.user.first_name, my_todos_path(user_id: todo.user.id) %></td>
+          <td><%= todo.user.first_name %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
   <%= will_paginate @list_items, list_classes: %w(pagination justify-content-center) %>
 </div>
-<hr>
-<h2>Add New Task</h2>
-<%= render 'todo_items/form' %>

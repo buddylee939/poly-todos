@@ -8,9 +8,8 @@
     <%= f.input :notes %>
     <%= f.input :response %>
     <%= f.input :completed %>
-    <%#= f.input :completed_at, as: %>
     <%= f.association :todo_list, prompt: 'Choose a Todo List' %>
-    <%= f.input :user_id, collection: User.all.map {|u| [u.first_name, u.id]}, prompt: 'Select User' %>
+    <%= f.input :user_id, collection: User.all.map {|u| [u.first_name, u.id]}, prompt: 'Select User', selected: current_user.id %>
   </div>
 
   <div class="form-actions">

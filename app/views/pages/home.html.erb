@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>ALL TODO</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th># of Tasks</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @todo_lists.each do |todo_list| %>
+      <tr>
+        <td><%= todo_list.title %></td>
+        <td><%= todo_list.description %></td>
+        <td><%= todo_list.todo_items.count %></td>
+        <td><%= link_to 'Show', todo_list %></td>
+        <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
+        <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
