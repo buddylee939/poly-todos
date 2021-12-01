@@ -1,3 +1,3 @@
 # needed
 
-- devise login
+- dependent destroy optional maybe?
