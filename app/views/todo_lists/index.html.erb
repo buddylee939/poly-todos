@@ -41,10 +41,36 @@
   </table>
 </div>
 
-<% if user_signed_in? && current_user.first_name.downcase == 'pep' %>
-  <div class="row">
-    <div class="col">
+<% if user_signed_in?  && current_user.first_name.downcase == 'pep' %>
+  <div class="row border my-3">
+    <div class="col-sm-3">
       <p class="table-success p-3 my-3">Count is <%= @count.count %></p>
     </div>
+    <% User.all.each do |u| %>
+    <div class="col-sm-3 my-3">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= u.first_name %>
+        </li>
+        <li class="list-group-item">
+          <%= "sign in: #{u.sign_in_count}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "current: #{u.current_sign_in_at.strftime("%m/%d/%Y at %I:%M%p")}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "last: #{u.last_sign_in_at.strftime("%m/%d/%Y at %I:%M%p")}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "current ip: #{u.current_sign_in_ip}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "last ip: #{u.last_sign_in_ip}" %>
+        </li>                 
+      </ul>
+    </div>
+    <% end %>
   </div>
 <% end %>
+
+       
