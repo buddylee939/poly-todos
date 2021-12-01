@@ -66,7 +66,10 @@
         </li>
         <li class="list-group-item">
           <%= "last ip: #{u.last_sign_in_ip}" %>
-        </li>                 
+        </li>    
+        <li class="list-group-item">
+          <%= "last update: #{u.item_updated_at.strftime("%m/%d/%Y at %I:%M%p") unless u.item_updated_at.nil?}" %>
+        </li>                     
       </ul>
     </div>
     <% end %>

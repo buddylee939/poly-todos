@@ -52,6 +52,8 @@ class TodoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_item.update(todo_item_params)
+        current_user.assign_attributes(item_updated_at: @todo_item.updated_at)
+        current_user.save
         format.html { redirect_to @todo_item, notice: "Todo item was successfully updated." }
         format.json { render :show, status: :ok, location: @todo_item }
       else
