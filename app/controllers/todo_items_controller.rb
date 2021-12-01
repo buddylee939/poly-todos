@@ -5,7 +5,9 @@ class TodoItemsController < ApplicationController
   def index
     # @todo_items = TodoItem.all
     # items = TodoItem.where(completed: false)
-    @todo_items = TodoItem.where(completed: false)
+    @q = TodoItem.ransack(params[:q])
+    @todo_items = @q.result(distinct: true)
+
   end
 
   def my_todos

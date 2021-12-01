@@ -1,0 +1,12 @@
+
+<%= search_form_for(@q, url: todo_items_path, class: 'form-inline my-2 my-lg-0') do |f| %>
+  <div class="input-group">
+    <%= f.search_field :task_or_response_or_notes_or_todo_list_title_cont, class: 'form-control mr-sm-2', placeholder: 'Search', :autocomplete => :off %>
+    <span class="input-group-append">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button>
+    </span>
+  </div>
+<% end %>
+
