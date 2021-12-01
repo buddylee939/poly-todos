@@ -56,11 +56,17 @@
           <%= "sign in: #{u.sign_in_count}" %>
         </li>
         <li class="list-group-item">
-          <%= "current: #{u.current_sign_in_at.strftime("%m/%d/%Y at %I:%M%p")}" %>
+          <%= "current: #{u.current_sign_in_at.strftime("%m/%d/%Y at %I:%M%p") unless u.current_sign_in_at.nil? }" %>
         </li>
         <li class="list-group-item">
-          <%= "last: #{u.last_sign_in_at.strftime("%m/%d/%Y at %I:%M%p")}" %>
-        </li>               
+          <%= "last: #{u.last_sign_in_at.strftime("%m/%d/%Y at %I:%M%p") unless u.last_sign_in_at.nil?}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "current ip: #{u.current_sign_in_ip}" %>
+        </li>
+        <li class="list-group-item">
+          <%= "last ip: #{u.last_sign_in_ip}" %>
+        </li>                 
       </ul>
     </div>
     <% end %>
